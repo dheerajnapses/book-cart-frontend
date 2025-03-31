@@ -51,9 +51,9 @@ export default function ProfilePage() {
   }, [user, isEditing, reset]);
 
   const handleProfileEdit = async (data: UserData) => {
-    const { name, email, phoneNumber } = data;
+    const { name, phoneNumber } = data;
     try {
-      const result = await updateUser({userId: user._id, userData: { name, email, phoneNumber }}).unwrap();
+      const result = await updateUser({userId: user._id, userData: { name, phoneNumber }}).unwrap();
       if (result.success && result.data) {
         dispatch(setUser(result.data));
         setIsEditing(false);
@@ -66,8 +66,6 @@ export default function ProfilePage() {
       toast.error(error.message || 'Failed to update user profile');
     }
   };
-
-
 
 
   return (
@@ -109,7 +107,7 @@ export default function ProfilePage() {
                     id="email"
                     placeholder="john.doe@example.com"
                     type="email"
-                    disabled={!isEditing}
+                    disabled={!isEditing || isEditing}
                     className="pl-10"
                     {...register('email')}
                   />

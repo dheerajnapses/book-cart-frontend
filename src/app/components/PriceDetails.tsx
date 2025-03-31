@@ -6,6 +6,7 @@ interface PriceDetailsProps {
   totalOriginalPrice: number;
   totalDiscount: number;
   totalAmount: number;
+  shippingCharge: number;
   itemCount: number;
   isProcessing: boolean;
   step: 'cart' | 'address' | 'payment';
@@ -17,6 +18,7 @@ export const PriceDetails: React.FC<PriceDetailsProps> = ({
   totalOriginalPrice,
   totalDiscount,
   totalAmount,
+  shippingCharge,
   itemCount,
   isProcessing,
   step,
@@ -39,7 +41,7 @@ export const PriceDetails: React.FC<PriceDetailsProps> = ({
         </div>
         <div className="flex justify-between">
           <span>Delivery Charges</span>
-          <span className="text-green-600">FREE</span>
+          <span className={`${shippingCharge === 0 ? 'text-green-600' : 'text-black'}`}>{shippingCharge === 0 ? 'Free' : `₹${shippingCharge}`}</span>
         </div>
         <div className="border-t pt-4 font-medium flex justify-between">
           <span>Total Amount</span>

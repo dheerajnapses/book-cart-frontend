@@ -61,7 +61,7 @@ export function OrderDetailsDialog({ order }: OrderDetailsDialogProps) {
                 isCompleted={statusIndex > 2} 
                 isActive={statusIndex === 2} 
               />
-              {order.status === 'cancelled' && (
+              {order?.status === 'cancelled' && (
                 <>
                   <div className="h-1 flex-1 bg-red-500" />
                   <StatusStep 
@@ -102,15 +102,15 @@ export function OrderDetailsDialog({ order }: OrderDetailsDialogProps) {
 
           <div className="bg-gradient-to-r from-green-100 to-teal-100 p-4 rounded-lg">
             <h3 className="font-semibold text-lg text-green-800 mb-2">Shipping Address</h3>
-            <p>{order.shippingAddress.addressLine1}</p>
-            <p>{order.shippingAddress.city}, {order.shippingAddress.state} - {order.shippingAddress.pincode}</p>
+            <p>{order?.shippingAddress?.addressLine1}</p>
+            <p>{order?.shippingAddress?.city}, {order?.shippingAddress?.state} - {order?.shippingAddress?.pincode}</p>
           </div>
 
           <div className="bg-gradient-to-r from-yellow-100 to-orange-100 p-4 rounded-lg">
             <h3 className="font-semibold text-lg text-yellow-800 mb-2">Payment Details</h3>
-            <p>Order ID: {order.paymentDetails.razorpay_order_id}</p>
-            <p>Payment ID: {order.paymentDetails.razorpay_payment_id}</p>
-            <p>Amount: ₹{order.totalAmount}</p>
+            <p>Order ID: {order?.paymentDetails?.razorpay_order_id}</p>
+            <p>Payment ID: {order?.paymentDetails?.razorpay_payment_id}</p>
+            <p>Amount: ₹{order?.totalAmount}</p>
           </div>
         </div>
       </DialogContent>

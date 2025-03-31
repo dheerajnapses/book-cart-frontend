@@ -50,7 +50,7 @@ export interface Product {
   title: string;
   price: number;
   finalPrice: number;
-  shippingCharge: string | number;
+  shippingCharge: string;
 }
 
 export interface CartItem {

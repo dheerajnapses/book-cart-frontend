@@ -124,6 +124,11 @@ export default function CheckoutPage() {
   const totalOriginalPrice = cart.items.reduce((acc, item) => acc + (item.product.price * item.quantity), 0);
   const totalDiscount = totalOriginalPrice - totalAmount;
 
+  const shippingCharge = cart.items.map(item => item.product.shippingCharge.toLowerCase() === 'free' ? 0 : parseFloat(item.product.shippingCharge) || 0)
+  const maximunShippingCharge = Math.max(...shippingCharge,0)
+  const finalAmount = totalAmount+ maximunShippingCharge;
+  
+
   const handleOpenLogin = () => {
     dispatch(toggleLoginDialog());
   };
@@ -344,7 +349,8 @@ export default function CheckoutPage() {
               <PriceDetails
                 totalOriginalPrice={totalOriginalPrice}
                 totalDiscount={totalDiscount}
-                totalAmount={totalAmount}
+                totalAmount={finalAmount}
+                shi
                 itemCount={cart.items.length}
                 isProcessing={isProcessing}
                 step={step}
