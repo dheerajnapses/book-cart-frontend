@@ -350,7 +350,7 @@ export default function CheckoutPage() {
                 totalOriginalPrice={totalOriginalPrice}
                 totalDiscount={totalDiscount}
                 totalAmount={finalAmount}
-                shi
+                shippingCharge={maximunShippingCharge}
                 itemCount={cart.items.length}
                 isProcessing={isProcessing}
                 step={step}
