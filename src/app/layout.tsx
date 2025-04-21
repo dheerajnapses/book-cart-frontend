@@ -25,9 +25,7 @@ export default function RootLayout({
         className={roboto_mono.className}
       >
         <LayoutWrapper>
-        <Header/>
         {children}
-        <Footer/>
         </LayoutWrapper>
       </body>
     </html>

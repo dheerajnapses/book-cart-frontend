@@ -26,6 +26,7 @@ export interface BookDetails {
 }
 
 export interface UserData {
+  _id:string;
   name: string;
   email: string;
   profilePicture?: string;

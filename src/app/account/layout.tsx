@@ -17,6 +17,7 @@ import { logout, toggleLoginDialog } from "@/store/slices/userSlice";
 import toast from "react-hot-toast";
 import { useLogoutMutation } from "@/store/api";
 import NoData from "@/lib/NoData";
+import { useEffect } from "react";
 
 const navigation = [
   {
@@ -55,6 +56,12 @@ export default function AccountLayout({
   const dispatch = useDispatch();
   const router = useRouter();
   const [logoutMutation] = useLogoutMutation()
+
+    useEffect(() => {
+       if (user && user.role !== "user") {
+         router.push("/admin");
+       }
+     }, [user, router]);
 
   const handleLogout = async () => {
     try {

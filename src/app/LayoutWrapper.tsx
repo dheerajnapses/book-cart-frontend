@@ -5,16 +5,23 @@ import { persistor, store } from "@/store/store";
 import { Provider } from "react-redux";
 import { PersistGate } from 'redux-persist/integration/react';
 import { Toaster } from 'react-hot-toast';
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import { usePathname } from "next/navigation";
 
 export default function LayoutWrapper({ children }: { children: React.ReactNode }) {
-  
+  const pathname = usePathname();
+  const isAdminRoute = pathname.startsWith("/admin");
+
   return (
-    <Provider store={store}> 
-     <PersistGate loading={<Loader />} persistor={persistor}>
-     <Toaster />
-      <AuthChecker> 
-        {children} 
-      </AuthChecker>
+    <Provider store={store}>
+      <PersistGate loading={<Loader />} persistor={persistor}>
+        <Toaster />
+        <AuthChecker>
+          {!isAdminRoute && <Header />}
+          {children}
+          {!isAdminRoute && <Footer />}
+        </AuthChecker>
       </PersistGate>
     </Provider>
   );

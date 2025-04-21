@@ -48,6 +48,13 @@ export default function SellBookPage() {
   const router = useRouter();
   const dispatch = useDispatch();
   const user = useSelector((state: RootState) => state.user.user);
+  
+    useEffect(() => {
+       if (user && user.role !== "user") {
+         router.push("/admin");
+       }
+     }, [user, router]);
+  
 
   const {
     register,

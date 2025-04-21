@@ -41,6 +41,7 @@ interface SignupFormData {
   email: string;
   password: string;
   agreeTerms: boolean;
+  role:string
 }
 
 interface ForgotPasswordFormData {
@@ -105,7 +106,7 @@ const Login: React.FC<LoginProps> = ({ isLoginOpen, setIsLoginOpen }) => {
     setSignupLoading(true);
     try {
       const { email, password, name } = data;
-      const result = await register({ email, password, name }).unwrap();
+      const result = await register({ email, password, name ,role:'user'}).unwrap();
       console.log(result);
       if (result.success) {
         toast.success("varification link send to email successfully");

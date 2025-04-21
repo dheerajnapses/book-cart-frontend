@@ -81,19 +81,19 @@ export function OrderDetailsDialog({ order }: OrderDetailsDialogProps) {
               {order.items.map((item, index) => (
                 <div key={index} className="flex items-center space-x-4">
                   <Image 
-                    src={item.product.images[0] || '/placeholder.png'} 
-                    alt={item.product.subject} 
+                    src={item?.product?.images[0] || '/placeholder.png'} 
+                    alt={item?.product?.subject} 
                     width={60} 
                     height={60} 
                     className="rounded-md"
                   />
                   <div>
-                  <p className="font-medium">{item.product.title}</p>
+                  <p className="font-medium">{item?.product?.title}</p>
                     <div className='flex gap-2'>
-                    <p className="font-medium">{item.product.subject}</p>
-                    ({order.items.map(item => item.product.author).join(", ")}) 
+                    <p className="font-medium">{item?.product?.subject}</p>
+                    ({order?.items.map(item => item?.product?.author).join(", ")}) 
                     </div>
-                    <p className="text-sm text-gray-600">Quantity: {item.quantity}</p>
+                    <p className="text-sm text-gray-600">Quantity: {item?.quantity}</p>
                   </div>
                 </div>
               ))}
